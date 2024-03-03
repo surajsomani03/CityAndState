@@ -167,43 +167,46 @@ function App() {
   }, [selectedState]);
 
   return (
-    <Box>
-      <FormControl fullWidth sx={{ marginBottom: "20px" }}>
-        <InputLabel id="state-label">State</InputLabel>
-        <Select
-          labelId="state-label"
-          id="state-select"
-          value={selectedState}
-          label="State"
-          onChange={handleStateChange}
-        >
-          {indianStates.map((stateName, index) => (
-            <MenuItem key={index} value={stateName}>
-              {stateName}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      {selectedState && (
-        <FormControl fullWidth>
-          <InputLabel id="city-label">City</InputLabel>
+    <div className="container">
+      <Box className="box-animation">
+        <FormControl sx={{ marginBottom: "20px", width: "400px" }}>
+          <InputLabel id="state-label">State</InputLabel>
           <Select
-            labelId="city-label"
-            id="city-select"
-            value={selectedCity}
-            label="City"
-            onChange={handleCityChange}
+            labelId="state-label"
+            id="state-select"
+            value={selectedState}
+            label="State"
+            onChange={handleStateChange}
           >
-            {cities.map((cityName: string, index: number) => (
-              <MenuItem key={index} value={cityName}>
-                {cityName}
+            {indianStates.map((stateName, index) => (
+              <MenuItem key={index} value={stateName}>
+                {stateName}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-      )}
-    </Box>
+        <br/>
+
+        {selectedState && (
+          <FormControl sx={{ width: "400px" }}>
+            <InputLabel id="city-label">City</InputLabel>
+            <Select
+              labelId="city-label"
+              id="city-select"
+              value={selectedCity}
+              label="City"
+              onChange={handleCityChange}
+            >
+              {cities.map((cityName: string, index: number) => (
+                <MenuItem key={index} value={cityName}>
+                  {cityName}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        )}
+      </Box>
+    </div>
   );
 }
 
